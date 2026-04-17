@@ -1,0 +1,60 @@
+User: 주식 현황을 알기 위해 필요한 기본적인 키워드들을 조사해서 그 키워드들로 주식 현황 파악에 도움되는 프로그램 생성을 위한 PRD를 알려 줘
+Model: Analyzing Stock Market Trends
+I'm currently focused on the stock market. I've begun researching foundational keywords to understand stock status and plan to use them in a PRD. The goal is to create a program to analyze stock status using these key terms to inform investors, and help them to make informed decisions.
+Defining Target Users & PRD
+I've defined my target user: beginners to intermediates seeking structured market tracking. Also, I've started outlining the PRD, which will need to include the overview, the target users, goals, key features, and technical components such as data sources. I'm focusing on defining the scope and user needs. I have started by defining key feature, such as analyzing stock indicators like MA, RSI, and MACD.
+Model: 주식 시장의 현황을 파악하기 위해서는 단순히 가격만 보는 것이 아니라, 시장의 돈 흐름과 기업의 가치를 결정하는 핵심 지표들을 이해해야 합니다.
+요청하신 1) 주식 핵심 키워드 조사와 이를 바탕으로 한 **2) 주식 현황 파악 프로그램 생성을 위한 PRD(제품 요구사항 문서)**를 정리해 드립니다.
+1. 주식 현황 파악을 위한 핵심 키워드 조사
+주식 데이터를 분석할 때 반드시 포함해야 할 키워드들을 4가지 카테고리로 분류했습니다.
+① 시장 가격 및 변동성 (Price & Volatility)
+현재가/등락률: 실시간 가격 및 전일 대비 변화 폭.
+거래량/거래대금: 시장의 관심도를 측정하는 척도. 거래량이 터지면서 상승하는 종목이 유효함.
+이동평균선 (MA): 주가의 평균 흐름 (5일, 20일, 60일, 120일). 추세 파악에 필수.
+② 가치 평가 지표 (Valuation)
+PER (주가수익비율): 이익 대비 주가가 적정한지 판단.
+PBR (주가순자산비율): 기업의 자산 가치 대비 주가 수준.
+ROE (자기자본이익률): 기업이 자본을 얼마나 효율적으로 사용하여 돈을 버는지 나타냄.
+시가총액: 기업의 전체 규모. 시장 내 위치 확인.
+③ 수급 및 심리 (Supply & Demand)
+외국인/기관 순매수량: 시장의 '큰손'들이 사고 있는지 파악.
+RSI (상대강도지수): 과매수/과매도 상태를 나타내는 심리 지표.
+공매도 잔고/비율: 하락에 배팅하는 세력의 규모 확인.
+④ 거시 경제 (Macro context)
+시장 지수: KOSPI, KOSDAQ, S&P500, NASDAQ 등 전체 장의 분위기.
+환율/금리: 주식 시장의 유동성에 직접적인 영향을 주는 요소.
+2. 프로그램 생성을 위한 PRD (제품 요구사항 문서)
+[PRD] 프로그램 명: StockInsight Dashboard (가칭)
+1. 프로젝트 개요
+목적: 사용자가 여러 사이트를 방문하지 않고도 핵심 키워드 기반의 데이터를 시각화하여 시장 현황을 한눈에 파악하고 투자 의사결정을 돕는 대시보드 구축.
+타겟 사용자: 일일 시장 흐름을 빠르게 파악하고 싶은 개인 투자자, 데이터 기반의 종목 스크리닝이 필요한 투자자.
+2. 주요 기능 (Core Features)
+A. 실시간 시장 요약 (Market Summary)
+주요 지수(KOSPI, KOSDAQ, 환율) 실시간 스트리밍.
+당일 상승/하락 종목 수 비율 시각화(히트맵).
+B. 키워드 기반 종목 스캐너 (Keyword Scanner)
+사용자가 설정한 키워드 조건(예: PER 10 이하 + 외국인 순매수 + 20일 이동평균선 돌파)에 맞는 종목 리스트업.
+C. 개별 종목 심층 분석 (Deep Dive)
+선택 종목의 재무 지표(ROE, PBR 등)와 차트 데이터 결합 출력.
+최근 주요 공시 및 뉴스 키워드 추출(NLP 활용).
+D. 알림 서비스 (Smart Alert)
+급등락, 거래량 폭증, 골든크로스 발생 시 즉시 알림.
+3. 데이터 요구사항 및 기술 스택
+데이터 소스:
+국내: 한국거래소(KRX), Open DART(공시), Naver/Kakao Finance API.
+해외: Yahoo Finance, Alpha Vantage.
+백엔드: Python (Pandas로 데이터 전처리, FastAPI/Flask로 API 서버 구축).
+프론트엔드: Streamlit (빠른 프로토타이핑용) 또는 React (전문 웹 서비스용).
+DB: PostgreSQL 또는 InfluxDB (시계열 데이터 저장).
+4. UI/UX 요구사항
+메인 대시보드: 복잡한 수치보다는 차트와 색상(상승-빨강, 하락-파랑)을 활용한 직관적 디자인.
+개인화: 사용자가 자주 보는 '관심 키워드' 및 '관심 종목' 설정 기능.
+5. 성공 지표 (KPI)
+사용자의 종목 분석 시간 단축 (기존 대비 50% 이상).
+조건 검색을 통한 유효 종목 발굴 정확도.
+3. 프로그램 개발을 위한 로드맵 (단계별 실행)
+1단계 (MVP): Python과 Pandas를 활용해 주가 데이터와 거래량을 불러와 표로 보여주는 기초 프로그램 제작.
+2단계 (Visualizing): Plotly나 Matplotlib을 사용하여 이동평균선과 RSI 지표를 시각화.
+3단계 (Filtering): PER, PBR 등 가치지표 필터링 기능 추가.
+4단계 (Automation): 매일 아침 시장 리포트를 자동으로 생성하여 텔레그램이나 이메일로 발송하는 기능 구현.
+이 PRD를 바탕으로 개발을 시작하시면, 단순한 가격 조회를 넘어 데이터에 기반한 전략적 투자가 가능한 도구를 만드실 수 있습니다. 추가로 특정 기능(예: 파이썬 코드 예시 등)이 궁금하시면 말씀해 주세요!

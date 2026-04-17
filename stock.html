@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockInsight Dashboard</title>
+    <link rel="stylesheet" href="stock-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 사이드바: 키워드 스캐너 -->
+        <aside class="sidebar">
+            <div class="logo">StockInsight</div>
+            <nav class="scanner-section">
+                <h3>🔍 키워드 스캐너</h3>
+                <div class="filter-group">
+                    <label>가치 평가 (PER)</label>
+                    <input type="range" id="per-filter" min="0" max="50" value="15">
+                    <span class="filter-val">15 이하</span>
+                </div>
+                <div class="filter-group">
+                    <label>심리 지표 (RSI)</label>
+                    <select id="rsi-filter">
+                        <option value="all">전체</option>
+                        <option value="oversold">과매도 (30 이하)</option>
+                        <option value="overbought">과매수 (70 이상)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>수급 (외국인)</label>
+                    <div class="flex-row">
+                        <label class="switch">
+                            <input type="checkbox" id="foreign-filter">
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="filter-label">순매수 종목만</span>
+                    </div>
+                </div>
+                <button id="scan-btn" class="scan-btn">종목 스캔 시작</button>
+            </nav>
+
+            <div class="watchlist">
+                <h3>⭐ 관심 종목</h3>
+                <ul id="watchlist-items">
+                    <li class="watchlist-item"><span>삼성전자</span> <span class="up">▲ 1.2%</span></li>
+                    <li class="watchlist-item"><span>SK하이닉스</span> <span class="down">▼ 0.8%</span></li>
+                    <li class="watchlist-item"><span>NAVER</span> <span class="up">▲ 2.5%</span></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="main-content">
+            <!-- 상단 시장 요약 -->
+            <header class="market-summary">
+                <div class="index-card">
+                    <span class="label">KOSPI</span>
+                    <span class="value" id="kospi-val">2,745.32</span>
+                    <span class="change up">▲ 12.45 (0.45%)</span>
+                </div>
+                <div class="index-card">
+                    <span class="label">KOSDAQ</span>
+                    <span class="value" id="kosdaq-val">892.11</span>
+                    <span class="change down">▼ 2.31 (0.26%)</span>
+                </div>
+                <div class="index-card">
+                    <span class="label">USD/KRW</span>
+                    <span class="value">1,352.50</span>
+                    <span class="change up">▲ 4.50</span>
+                </div>
+            </header>
+
+            <!-- 차트 영역 -->
+            <section class="chart-container">
+                <div class="chart-header">
+                    <h2 id="selected-stock-name">삼성전자 (005930) 심층 분석</h2>
+                    <div class="chart-tabs">
+                        <button class="active">주가/이평선</button>
+                        <button>RSI/수급</button>
+                    </div>
+                </div>
+                <div class="canvas-wrapper">
+                    <canvas id="mainChart"></canvas>
+                </div>
+            </section>
+
+            <!-- 하단 데이터 그리드 -->
+            <section class="data-grid">
+                <div class="grid-card info-card">
+                    <h3>📊 핵심 펀더멘털</h3>
+                    <div class="metrics">
+                        <div class="metric"><span>PER</span> <strong>12.5</strong></div>
+                        <div class="metric"><span>PBR</span> <strong>1.42</strong></div>
+                        <div class="metric"><span>ROE</span> <strong class="up">15.2%</strong></div>
+                        <div class="metric"><span>시총</span> <strong>450조</strong></div>
+                    </div>
+                </div>
+                <div class="grid-card news-card">
+                    <h3>📰 뉴스 키워드 분석 (NLP)</h3>
+                    <div class="tags">
+                        <span class="tag positive">반도체 호재</span>
+                        <span class="tag positive">외국인 집중매수</span>
+                        <span class="tag neutral">금리 동결</span>
+                        <span class="tag negative">수출 규제 우려</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="stock-script.js"></script>
+</body>
+</html>
